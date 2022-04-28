@@ -5,12 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JTextField;
 import java.awt.event.FocusAdapter;
@@ -20,6 +24,10 @@ import java.awt.event.WindowEvent;
 import javax.swing.JTable;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import javax.swing.ListSelectionModel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
 
 public class CusLogin extends JFrame {
 
@@ -31,6 +39,7 @@ public class CusLogin extends JFrame {
 	private final JTextField textEmail = new JTextField();
 	jdbc_test hello = new jdbc_test();
 	private final JTable table = new JTable();
+	private final JScrollPane scrollPane = new JScrollPane();
 	/**
 	 * Launch the application.
 	 */
@@ -65,6 +74,27 @@ public class CusLogin extends JFrame {
 			e1.printStackTrace();
 		}
 		
+		
+		List<String> columns = new ArrayList<String>();
+		columns.add("Package_id");
+		columns.add("Last_distro_id");
+		columns.add("Shipping_adress");
+		columns.add("Shipping_City");
+		columns.add("Shipping_Zip");
+		columns.add("Shipping_country");
+		columns.add("Out_for_del");
+		columns.add("status");
+		
+		
+		List<String[]> values = new ArrayList<String[]>();
+
+		 for (int i = 0; i < 100; i++) {
+	            values.add(new String[] {"val"+i+" col1","val"+i+" col2","val"+i+" col3"});
+	        }
+	      TableModel tableModel = new DefaultTableModel(values.toArray(new Object[][] {}), columns.toArray());
+	      JTable table = new JTable(tableModel);
+	      table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	      table.setFillsViewportHeight(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 519, 343);
 		
@@ -92,7 +122,8 @@ public class CusLogin extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int account_id = new jdbc_test().get_acc_id(Startup.Email, Startup.Password);
-				System.out.println(account_id);
+				new Orders().setVisible(true);
+				
 			}
 		});
 		mntmOrders.setBackground(Color.WHITE);
@@ -130,10 +161,11 @@ public class CusLogin extends JFrame {
 		
 		
 		contentPane.add(textEmail);
-		table.setBounds(236, 78, 218, 96);
+		scrollPane.setViewportBorder(UIManager.getBorder("DesktopIcon.border"));
+		scrollPane.setBounds(175, 59, 320, 211);
 		
-		
-		
-		contentPane.add(table);
+		contentPane.add(scrollPane);
+		table.setFillsViewportHeight(true);
+		scrollPane.setRowHeaderView(table);
 	}
 }
