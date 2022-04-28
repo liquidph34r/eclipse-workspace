@@ -120,36 +120,5 @@ public class jdbc_test {
    	        }catch(Exception e){System.out.println(e); }
 				return null;
        }
- 
-
-public int get_acc_id(String username, String pass) {
-	 System.out.println("Connect to DB");
-       try {
-//step1 load the driver class
-           Class.forName("oracle.jdbc.driver.OracleDriver");
-
-//step2 create  the connection object
-           Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/ORCL", "HR", "oracle");
-           	System.out.println("Database successfully connected");
-           
-//step3 create the statement object
-           
-           PreparedStatement st = conn.prepareStatement("select * from ACCOUNT where email = ? and password = ?");
-           st.setString(1,username);
-           st.setString(2, pass);
-           ResultSet rs = st.executeQuery();
-           
-           while(rs.next())
-           {
-        
-        	   return (rs.getInt("Account_id"));
-           }
-         //step5 close the connection object
-           st.close();
-       	conn.close();
-     
-       }catch(Exception e){System.out.println(e); }
-		return -1;
-}
-}
+ }
   

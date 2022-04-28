@@ -151,5 +151,4 @@ public int get_acc_id(String username, String pass) {
        }catch(Exception e){System.out.println(e); }
 		return -1;
 }
-}
   

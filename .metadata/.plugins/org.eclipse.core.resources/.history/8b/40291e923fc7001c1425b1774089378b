@@ -56,15 +56,19 @@ public class CusLogin extends JFrame {
 		initGUI();
 	}
 	private void initGUI() {
-		ResultSet rs =hello.get_user_info(Startup.Email, Startup.Password);
-		try {
-			rs.next();
-			textEmail.setText(rs.getString("email"));
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
+		addWindowStateListener(new WindowStateListener() {
+			public void windowStateChanged(WindowEvent e) {
+			ResultSet rs =hello.get_user_info(Startup.Email, Startup.Password);
+				try {
+					rs.next();
+					textEmail.setText(rs.getString("email"));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 519, 343);
 		

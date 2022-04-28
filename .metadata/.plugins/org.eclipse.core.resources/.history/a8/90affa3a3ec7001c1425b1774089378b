@@ -82,8 +82,7 @@ public class Startup extends JFrame {
 				} else {
 					Email = cUser.getText();
 					Password = cPass.getText();
-					new CusLogin().setVisible(true);
-					dispose();
+
 					}
 			}
 		});

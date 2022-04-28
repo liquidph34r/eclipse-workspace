@@ -17,9 +17,6 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.WindowStateListener;
 import java.awt.event.WindowEvent;
-import javax.swing.JTable;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
 
 public class CusLogin extends JFrame {
 
@@ -30,7 +27,6 @@ public class CusLogin extends JFrame {
 	private final JMenuItem mntmLogOut = new JMenuItem("LogOut");
 	private final JTextField textEmail = new JTextField();
 	jdbc_test hello = new jdbc_test();
-	private final JTable table = new JTable();
 	/**
 	 * Launch the application.
 	 */
@@ -56,15 +52,19 @@ public class CusLogin extends JFrame {
 		initGUI();
 	}
 	private void initGUI() {
-		ResultSet rs =hello.get_user_info(Startup.Email, Startup.Password);
-		try {
-			rs.next();
-			textEmail.setText(rs.getString("email"));
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
+		addWindowStateListener(new WindowStateListener() {
+			public void windowStateChanged(WindowEvent e) {
+			ResultSet rs =hello.get_user_info(Startup.Email, Startup.Password);
+				try {
+					rs.next();
+					textEmail.setText(rs.getString("email"));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 519, 343);
 		
@@ -89,11 +89,6 @@ public class CusLogin extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				mntmOrders.setBackground(Color.white);
 			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int account_id = new jdbc_test().get_acc_id(Startup.Email, Startup.Password);
-				System.out.println(account_id);
-			}
 		});
 		mntmOrders.setBackground(Color.WHITE);
 		
@@ -110,19 +105,12 @@ public class CusLogin extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Startup startup1 = new Startup();
 				startup1.setVisible(true);
-				dispose();
 			}
 		});
 		mntmLogOut.setBackground(Color.WHITE);
 		
 		menuBar.add(mntmLogOut);
 		contentPane = new JPanel();
-		contentPane.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent evt) {
-				int account_id = new jdbc_test().get_acc_id(Startup.Email, Startup.Password);
-				System.out.println(account_id);
-			}
-		});
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -130,10 +118,8 @@ public class CusLogin extends JFrame {
 		
 		
 		contentPane.add(textEmail);
-		table.setBounds(236, 78, 218, 96);
 		
 		
-		
-		contentPane.add(table);
 	}
+
 }
