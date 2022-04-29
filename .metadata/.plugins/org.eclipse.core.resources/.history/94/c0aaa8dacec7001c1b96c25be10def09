@@ -114,11 +114,6 @@ public class CusLogin extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				mntmOrders.setBackground(Color.white);
 			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new Orders().setVisible(true);
-				
-			}
 		});
 		mntmOrders.setBackground(Color.WHITE);
 		
