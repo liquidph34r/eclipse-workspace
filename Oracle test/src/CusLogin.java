@@ -39,6 +39,30 @@ public class CusLogin extends JFrame {
 	private final JTextField textEmail = new JTextField();
 	jdbc_test hello = new jdbc_test();
 	private final JTable table = new JTable();
+	private final JLabel lblNewLabel_1 = new JLabel("Email:");
+	private final JLabel lblNewLabel_1_1 = new JLabel("Password:");
+	private final JLabel lblNewLabel_1_2 = new JLabel("First Name:");
+	private final JLabel lblNewLabel_1_2_1 = new JLabel("Last Name:");
+	private final JTextField FName = new JTextField();
+	private final JTextField LName = new JTextField();
+	private final JTextField Email = new JTextField();
+	private final JTextField Password = new JTextField();
+	private final JLabel lblNewLabel_2 = new JLabel("Basic Information");
+	private final JLabel Country = new JLabel("Country:");
+	private final JLabel s = new JLabel("State:");
+	private final JLabel AddressLine1 = new JLabel("Address Line 1:");
+	private final JLabel lblNewLabel_1_2_1_1 = new JLabel("City:");
+	private final JTextField Address = new JTextField();
+	private final JTextField City = new JTextField();
+	private final JTextField C_Country = new JTextField();
+	private final JTextField State = new JTextField();
+	private final JLabel lblNewLabel_2_1 = new JLabel("Shipping Information");
+	private final JLabel p = new JLabel("Postcode/ ZIP:");
+	private final JTextField PostalCode = new JTextField();
+	private final JLabel lblNewLabel_3 = new JLabel("Middle Initial:");
+	private final JTextField MiddleInitial = new JTextField();
+	private final JLabel lblNewLabel = new JLabel("User ID:");
+	private final JTextField UserID = new JTextField();
 	/**
 	 * Launch the application.
 	 */
@@ -154,6 +178,101 @@ public class CusLogin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1.setBounds(11, 152, 45, 21);
+		
+		contentPane.add(lblNewLabel_1);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_1.setBounds(11, 184, 68, 21);
+		
+		contentPane.add(lblNewLabel_1_1);
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2.setBounds(11, 61, 68, 21);
+		
+		contentPane.add(lblNewLabel_1_2);
+		lblNewLabel_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2_1.setBounds(11, 125, 68, 21);
+		
+		contentPane.add(lblNewLabel_1_2_1);
+		FName.setColumns(10);
+		FName.setBounds(86, 62, 142, 20);
+		
+		contentPane.add(FName);
+		LName.setColumns(10);
+		LName.setBounds(86, 126, 142, 20);
+		
+		contentPane.add(LName);
+		Email.setColumns(10);
+		Email.setBounds(52, 153, 142, 20);
+		
+		contentPane.add(Email);
+		Password.setColumns(10);
+		Password.setBounds(86, 185, 142, 20);
+		
+		contentPane.add(Password);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(62, 36, 122, 14);
+		
+		contentPane.add(lblNewLabel_2);
+		Country.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		Country.setBounds(279, 120, 57, 21);
+		
+		contentPane.add(Country);
+		s.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		s.setBounds(279, 152, 39, 21);
+		
+		contentPane.add(s);
+		AddressLine1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		AddressLine1.setBounds(279, 61, 89, 21);
+		
+		contentPane.add(AddressLine1);
+		lblNewLabel_1_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2_1_1.setBounds(280, 93, 38, 21);
+		
+		contentPane.add(lblNewLabel_1_2_1_1);
+		Address.setColumns(10);
+		Address.setBounds(378, 62, 142, 20);
+		
+		contentPane.add(Address);
+		City.setColumns(10);
+		City.setBounds(313, 94, 142, 20);
+		
+		contentPane.add(City);
+		C_Country.setColumns(10);
+		C_Country.setBounds(337, 121, 142, 20);
+		
+		contentPane.add(C_Country);
+		State.setColumns(10);
+		State.setBounds(323, 153, 142, 20);
+		
+		contentPane.add(State);
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2_1.setBounds(352, 36, 154, 14);
+		
+		contentPane.add(lblNewLabel_2_1);
+		p.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		p.setBounds(279, 184, 89, 21);
+		
+		contentPane.add(p);
+		PostalCode.setColumns(10);
+		PostalCode.setBounds(378, 185, 142, 20);
+		
+		contentPane.add(PostalCode);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_3.setBounds(10, 93, 89, 21);
+		
+		contentPane.add(lblNewLabel_3);
+		MiddleInitial.setColumns(10);
+		MiddleInitial.setBounds(96, 93, 25, 20);
+		
+		contentPane.add(MiddleInitial);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel.setBounds(11, 216, 62, 29);
+		
+		contentPane.add(lblNewLabel);
+		
+		contentPane.add(UserID);
 		
 		
 		contentPane.add(textEmail);
