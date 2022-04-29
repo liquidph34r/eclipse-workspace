@@ -81,7 +81,7 @@ public class Orders extends JFrame {
 	           
 	//step3 create the statement object
 	           
-	           PreparedStatement st = conn.prepareStatement("select * from Packages where account_id_REF = ?");
+	           PreparedStatement st = conn.prepareStatement("select * from Packages where account_id = ?");
 	           st.setInt(1,new jdbc_test().get_acc_id(new Startup().Email,new Startup().Password));
 	           ResultSet rs = st.executeQuery();
 	           

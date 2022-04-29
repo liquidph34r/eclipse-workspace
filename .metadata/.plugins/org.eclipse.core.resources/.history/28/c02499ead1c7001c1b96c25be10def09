@@ -271,7 +271,6 @@ public class CusLogin extends JFrame {
 	        	   lblCity.setText(rs.getString("Default_Shipping_city"));
 	        	   lblPostalCode.setText(rs.getString("Default_SHipping_zip"));
 	        	   lblC_Country.setText(rs.getString("Default_shipping_country"));
-	        	   lblState.setText(rs.getString("Default_shipping_state"));
 	        	   
 	        	   
 	           }
