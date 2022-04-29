@@ -39,6 +39,7 @@ public class CusLogin extends JFrame {
 	private final JTextField textEmail = new JTextField();
 	jdbc_test hello = new jdbc_test();
 	private final JTable table = new JTable();
+	private final JScrollPane scrollPane = new JScrollPane();
 	/**
 	 * Launch the application.
 	 */
@@ -91,6 +92,9 @@ public class CusLogin extends JFrame {
 	            values.add(new String[] {"val"+i+" col1","val"+i+" col2","val"+i+" col3"});
 	        }
 	      TableModel tableModel = new DefaultTableModel(values.toArray(new Object[][] {}), columns.toArray());
+	      JTable table = new JTable(tableModel);
+	      table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	      table.setFillsViewportHeight(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 519, 343);
 		
@@ -157,5 +161,11 @@ public class CusLogin extends JFrame {
 		
 		
 		contentPane.add(textEmail);
+		scrollPane.setViewportBorder(UIManager.getBorder("DesktopIcon.border"));
+		scrollPane.setBounds(175, 59, 320, 211);
+		
+		contentPane.add(scrollPane);
+		table.setFillsViewportHeight(true);
+		scrollPane.setRowHeaderView(table);
 	}
 }
