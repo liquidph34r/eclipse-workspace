@@ -154,7 +154,7 @@ public class Startup extends JFrame {
 				} else {
 					Email = eUser.getText();
 					Password = ePass.getText();
-					new EmpLogin().setVisible(true);
+					new CusLogin().setVisible(true);
 					dispose();
 					}
 			}
