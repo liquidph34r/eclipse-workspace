@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
@@ -28,7 +29,7 @@ public class Startup extends JFrame {
 	private final JLabel lblNewLabel_1 = new JLabel("Password");
 	private final JLabel lblNewLabel_2 = new JLabel("Customer Login");
 	private final JLabel lblpassword = new JLabel("");
-	CusLogin c1 = new CusLogin();
+	//CusLogin c1 = new CusLogin();
 	public static String Email = "";
 	public static String Password = "";
 	private JTextField eUser;
@@ -63,7 +64,7 @@ public class Startup extends JFrame {
 	}
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 479, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -103,14 +104,19 @@ public class Startup extends JFrame {
 		lblNewLabel_1.setBounds(11, 119, 46, 14);
 		
 		contentPane.add(lblNewLabel_1);
+		
+		
 		lblNewLabel_2.setBounds(106, 11, 74, 14);
 		
 		contentPane.add(lblNewLabel_2);
+		
+		
 		lblpassword.setForeground(Color.RED);
 		lblpassword.setBounds(69, 147, 151, 14);
 		
 		contentPane.add(lblpassword);
 		
+	
 		lblpassword_2.setForeground(Color.RED);
 		lblpassword_2.setBounds(106, 11, 74, 14);
 		
@@ -169,7 +175,19 @@ public class Startup extends JFrame {
 				dispose();
 			}
 		});
-		SignUp.setBounds(197, 227, 89, 23);
+		SignUp.setBounds(91, 227, 89, 23);
 		contentPane.add(SignUp);
+		
+		JButton SignUp_2 = new JButton("Sign Up");
+		SignUp_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SignUp_Emp signUp1 = new SignUp_Emp();
+				signUp1.setVisible(true);
+				dispose();
+			}
+		});
+		SignUp_2.setBounds(326, 227, 89, 23);
+		contentPane.add(SignUp_2);
 	}
 }
