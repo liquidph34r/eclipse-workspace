@@ -35,6 +35,9 @@ public class Startup extends JFrame {
 	private JTextField eUser;
 	private JTextField ePass;
 	private final JLabel lblpassword_2 = new JLabel("");
+	private final JButton btnNewButton = new JButton("Check Order Number");
+	private final JTextField lblorderNum = new JTextField();
+	public static String publicOrderId = "";
 
 	/**
 	 * Launch the application.
@@ -56,6 +59,8 @@ public class Startup extends JFrame {
 	 * Create the frame.
 	 */
 	public Startup() {
+		lblorderNum.setBounds(211, 175, 86, 20);
+		lblorderNum.setColumns(10);
 		cPass.setBounds(67, 116, 153, 20);
 		cPass.setColumns(10);
 		cUser.setBounds(67, 78, 153, 20);
@@ -189,5 +194,19 @@ public class Startup extends JFrame {
 		});
 		SignUp_2.setBounds(326, 227, 89, 23);
 		contentPane.add(SignUp_2);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				publicOrderId = lblorderNum.getText();
+				new UnattachedOrders().setVisible(true);
+				
+				
+			}
+		});
+		btnNewButton.setBounds(190, 227, 133, 23);
+		
+		contentPane.add(btnNewButton);
+		
+		contentPane.add(lblorderNum);
 	}
 }

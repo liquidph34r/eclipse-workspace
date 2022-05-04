@@ -22,6 +22,7 @@ import java.awt.event.WindowStateListener;
 import java.awt.event.WindowEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JButton;
 
 public class CusLogin extends JFrame {
 
@@ -55,6 +56,7 @@ public class CusLogin extends JFrame {
 	private final JTextField MiddleInitial = new JTextField();
 	private final JLabel lblNewLabel = new JLabel("User ID:");
 	private final JTextField UserID = new JTextField();
+	private final JButton btnChange = new JButton("Change Info");
 	/**
 	 * Launch the application.
 	 */
@@ -376,8 +378,18 @@ public class CusLogin extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		contentPane.add(UserID);
+		btnChange.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new UpdateUserInfo().setVisible(true);
+				dispose();
+			}
+		});
+		btnChange.setBounds(199, 261, 124, 23);
 		
 		
+		
+		contentPane.add(btnChange);
 	}
 
 }

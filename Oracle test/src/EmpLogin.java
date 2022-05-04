@@ -22,6 +22,7 @@ import java.awt.event.WindowStateListener;
 import java.awt.event.WindowEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JButton;
 
 public class EmpLogin extends JFrame {
 	
@@ -58,6 +59,7 @@ public class EmpLogin extends JFrame {
 	private final JTextField lblEmpID = new JTextField();
 	private final JTextField lblDistroID = new JTextField();
 	private final JLabel lblNewLabel_4 = new JLabel("DistroID");
+	private final JButton btnNewButton = new JButton("Update Info");
 	/**
 	 * Launch the application.
 	 */
@@ -294,5 +296,15 @@ public class EmpLogin extends JFrame {
 		lblNewLabel_4.setBounds(10, 259, 46, 14);
 		
 		contentPane.add(lblNewLabel_4);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new UpdateEmpInfo().setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(279, 261, 122, 23);
+		
+		contentPane.add(btnNewButton);
 	}
 }

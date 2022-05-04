@@ -130,7 +130,7 @@ public class SignUp extends JFrame{
 					           	Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/ORCL", "HR", "oracle");
 					           	System.out.println("Database successfully connected");
 					           	Statement statement = conn.createStatement();
-					           	statement.executeUpdate("INSERT INTO customer(Account_id, first_name, last_name, Middle_init, email, password,  default_shipping_adress, default_shipping_city,default_shipping_country, default_shipping_state, default_shipping_zip) VALUES('"+(FName.getText().trim())+"','"+(LName.getText().trim())+","+(MiddleI.getText().trim())+"','"+(Email.getText().trim())+"','"+(Password.getText().trim())+"','"+(Address.getText().trim())+"','"+(City.getText().trim())+"','"+(C_Country.getText().trim())+"','"+(State.getText().trim())+"','"+(PostCode.getText().trim()));
+					           	statement.executeUpdate("INSERT INTO Account(account_id,first_name, last_name, Middle_init, email, password,  default_shipping_adress, default_shipping_city,default_shipping_country, default_shipping_state, default_shipping_zip) VALUES('"+(FName.getText().trim())+"','"+(LName.getText().trim())+"','"+(MiddleI.getText().trim())+"','"+(Email.getText().trim())+"','"+(Password.getText().trim())+"','"+(Address.getText().trim())+"','"+(City.getText().trim())+"','"+(C_Country.getText().trim())+"','"+(State.getText().trim())+"','"+(PostCode.getText().trim())+"')");
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
