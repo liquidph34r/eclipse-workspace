@@ -114,7 +114,7 @@ public class EmpLogin extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Distro_Orders().setVisible(true);
+				new Orders().setVisible(true);
 				
 			}
 		});

@@ -200,14 +200,14 @@ public int get_acc_distro(String username, String pass) {
           
 //step3 create the statement object
           
-          PreparedStatement st = conn.prepareStatement("select * from Employee where email = ? and password = ?");
+          PreparedStatement st = conn.prepareStatement("select * from ACCOUNT where email = ? and password = ?");
           st.setString(1,username);
           st.setString(2, pass);
           ResultSet rs = st.executeQuery();
           
           while(rs.next())
           {
-        	  System.out.println("hello2");
+       
        	   return (rs.getInt("assigned_distro_id"));
           }
         //step5 close the connection object

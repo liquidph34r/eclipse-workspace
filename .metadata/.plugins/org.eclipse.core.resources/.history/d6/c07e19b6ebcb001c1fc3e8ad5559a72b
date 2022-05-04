@@ -207,7 +207,7 @@ public int get_acc_distro(String username, String pass) {
           
           while(rs.next())
           {
-        	  System.out.println("hello2");
+       
        	   return (rs.getInt("assigned_distro_id"));
           }
         //step5 close the connection object

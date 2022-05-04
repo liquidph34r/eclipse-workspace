@@ -148,7 +148,7 @@ public class Startup extends JFrame {
 		btnEmpLogin_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				boolean res = hello.emp_login(eUser.getText(),ePass.getText());
+				boolean res = hello.user_login(eUser.getText(),ePass.getText());
 				if(res == false) {
 					lblpassword_2.setText("Incorrect Password");
 				} else {

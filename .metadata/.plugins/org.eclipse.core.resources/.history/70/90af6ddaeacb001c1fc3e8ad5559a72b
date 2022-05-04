@@ -23,13 +23,12 @@ import java.awt.event.WindowEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-public class EmpLogin extends JFrame {
-	
+public class CusLogin extends JFrame {
 
 	private JPanel contentPane;
 	private final JMenuBar menuBar = new JMenuBar();
 	private final JMenuItem mntmHome = new JMenuItem("Home");
-	private final JMenuItem mntmDistroOrder = new JMenuItem("Distribution Orders");
+	private final JMenuItem mntmOrders = new JMenuItem("Orders");
 	private final JMenuItem mntmLogOut = new JMenuItem("LogOut");
 	jdbc_test hello = new jdbc_test();
 	private final JLabel lblNewLabel_1 = new JLabel("Email:");
@@ -38,26 +37,24 @@ public class EmpLogin extends JFrame {
 	private final JLabel lblNewLabel_1_2_1 = new JLabel("Last Name:");
 	private final JTextField lblFName = new JTextField();
 	private final JTextField lblLName = new JTextField();
-	private final JTextField lblEmail = new JTextField();
+	private final JTextField Email = new JTextField();
 	private final JTextField lblPassword = new JTextField();
 	private final JLabel lblNewLabel_2 = new JLabel("Basic Information");
 	private final JLabel Country = new JLabel("Country:");
 	private final JLabel s = new JLabel("State:");
 	private final JLabel AddressLine1 = new JLabel("Address Line 1:");
 	private final JLabel lblNewLabel_1_2_1_1 = new JLabel("City:");
-	private final JTextField lblAddress = new JTextField();
-	private final JTextField lblCity = new JTextField();
-	private final JTextField lblC_Country = new JTextField();
-	private final JTextField lblState = new JTextField();
+	private final JTextField Address = new JTextField();
+	private final JTextField City = new JTextField();
+	private final JTextField C_Country = new JTextField();
+	private final JTextField State = new JTextField();
 	private final JLabel lblNewLabel_2_1 = new JLabel("Shipping Information");
 	private final JLabel p = new JLabel("Postcode/ ZIP:");
-	private final JTextField lblPostalCode = new JTextField();
+	private final JTextField PostalCode = new JTextField();
 	private final JLabel lblNewLabel_3 = new JLabel("Middle Initial:");
-	private final JTextField lblMiddleInitial = new JTextField();
-	private final JLabel lblNewLabel = new JLabel("Emp ID:");
-	private final JTextField lblEmpID = new JTextField();
-	private final JTextField lblDistroID = new JTextField();
-	private final JLabel lblNewLabel_4 = new JLabel("DistroID");
+	private final JTextField MiddleInitial = new JTextField();
+	private final JLabel lblNewLabel = new JLabel("User ID:");
+	private final JTextField UserID = new JTextField();
 	/**
 	 * Launch the application.
 	 */
@@ -77,13 +74,10 @@ public class EmpLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EmpLogin() {
-		lblDistroID.setEditable(false);
-		lblDistroID.setBounds(62, 256, 86, 20);
-		lblDistroID.setColumns(10);
-		lblEmpID.setEditable(false);
-		lblEmpID.setBounds(62, 221, 86, 20);
-		lblEmpID.setColumns(10);
+	public CusLogin() {
+		lblUserID.setEditable(false);
+		lblUserID.setBounds(62, 221, 86, 20);
+		lblUserID.setColumns(10);
 		initGUI();
 	}
 	private void initGUI() {
@@ -104,23 +98,23 @@ public class EmpLogin extends JFrame {
 		});
 		
 		menuBar.add(mntmHome);
-		mntmDistroOrder.addMouseListener(new MouseAdapter() {
+		mntmOrders.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				mntmDistroOrder.setBackground(Color.LIGHT_GRAY);
+				mntmOrders.setBackground(Color.LIGHT_GRAY);
 			}
 			public void mouseExited(MouseEvent e) {
-				mntmDistroOrder.setBackground(Color.white);
+				mntmOrders.setBackground(Color.white);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Distro_Orders().setVisible(true);
+				new Orders().setVisible(true);
 				
 			}
 		});
-		mntmDistroOrder.setBackground(Color.WHITE);
+		mntmOrders.setBackground(Color.WHITE);
 		
-		menuBar.add(mntmDistroOrder);
+		menuBar.add(mntmOrders);
 		mntmLogOut.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -170,11 +164,11 @@ public class EmpLogin extends JFrame {
 		lblLName.setBounds(86, 126, 142, 20);
 		
 		contentPane.add(lblLName);
-		lblEmail.setEditable(false);
-		lblEmail.setColumns(10);
-		lblEmail.setBounds(52, 153, 142, 20);
+		Email.setEditable(false);
+		Email.setColumns(10);
+		Email.setBounds(52, 153, 142, 20);
 		
-		contentPane.add(lblEmail);
+		contentPane.add(Email);
 		lblPassword.setEditable(false);
 		lblPassword.setColumns(10);
 		lblPassword.setBounds(86, 185, 142, 20);
@@ -247,7 +241,7 @@ public class EmpLogin extends JFrame {
 		
 		contentPane.add(lblNewLabel);
 		
-		contentPane.add(lblEmpID);
+		contentPane.add(lblUserID);
 		
 		
 		 System.out.println("Connect to DB");
@@ -261,24 +255,24 @@ public class EmpLogin extends JFrame {
 	           
 	//step3 create the statement object
 	           
-	           PreparedStatement st = conn.prepareStatement("select * from Employee where email = ? and password = ?");
+	           PreparedStatement st = conn.prepareStatement("select * from ACCOUNT where email = ? and password = ?");
 	           st.setString(1,new Startup().Email);
 	           st.setString(2, new Startup().Password);
 	           ResultSet rs = st.executeQuery();
 	           
 	           while(rs.next())
 	           {
-	        	   lblEmail.setText(rs.getString("Email"));
+	        	   Email.setText(rs.getString("Email"));
 	        	   lblFName.setText(rs.getString("First_name"));
 	        	   lblLName.setText(rs.getString("Last_Name"));
 	        	   lblMiddleInitial.setText(rs.getString("Middle_init"));
-	        	   lblEmpID.setText(rs.getString("EMPloyee_id"));
+	        	   lblUserID.setText(rs.getString("Account_ID"));
 	        	   lblAddress.setText(rs.getString("Default_Shipping_adress"));
 	        	   lblCity.setText(rs.getString("Default_Shipping_city"));
 	        	   lblPostalCode.setText(rs.getString("Default_SHipping_zip"));
 	        	   lblC_Country.setText(rs.getString("Default_shipping_country"));
 	        	   lblState.setText(rs.getString("Default_shipping_state"));
-	        	   lblDistroID.setText(rs.getString("Assigned_distro_id"));
+	        	   
 	        	   
 	           }
 	         //step5 close the connection object
@@ -288,11 +282,102 @@ public class EmpLogin extends JFrame {
 	       }catch(Exception e){System.out.println(e); }
 			
 		
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1.setBounds(11, 152, 45, 21);
+		
+		contentPane.add(lblNewLabel_1);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_1.setBounds(11, 184, 68, 21);
+		
+		contentPane.add(lblNewLabel_1_1);
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2.setBounds(11, 61, 68, 21);
+		
+		contentPane.add(lblNewLabel_1_2);
+		lblNewLabel_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2_1.setBounds(11, 125, 68, 21);
+		
+		contentPane.add(lblNewLabel_1_2_1);
+		FName.setColumns(10);
+		FName.setBounds(86, 62, 142, 20);
+		
+		contentPane.add(FName);
+		LName.setColumns(10);
+		LName.setBounds(86, 126, 142, 20);
+		
+		contentPane.add(LName);
+		Email.setColumns(10);
+		Email.setBounds(52, 153, 142, 20);
+		
+		contentPane.add(Email);
+		Password.setColumns(10);
+		Password.setBounds(86, 185, 142, 20);
+		
+		contentPane.add(Password);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(62, 36, 122, 14);
+		
+		contentPane.add(lblNewLabel_2);
+		Country.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		Country.setBounds(279, 120, 57, 21);
+		
+		contentPane.add(Country);
+		s.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		s.setBounds(279, 152, 39, 21);
+		
+		contentPane.add(s);
+		AddressLine1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		AddressLine1.setBounds(279, 61, 89, 21);
+		
+		contentPane.add(AddressLine1);
+		lblNewLabel_1_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2_1_1.setBounds(280, 93, 38, 21);
+		
+		contentPane.add(lblNewLabel_1_2_1_1);
+		Address.setColumns(10);
+		Address.setBounds(378, 62, 142, 20);
+		
+		contentPane.add(Address);
+		City.setColumns(10);
+		City.setBounds(313, 94, 142, 20);
+		
+		contentPane.add(City);
+		C_Country.setColumns(10);
+		C_Country.setBounds(337, 121, 142, 20);
+		
+		contentPane.add(C_Country);
+		State.setColumns(10);
+		State.setBounds(323, 153, 142, 20);
+		
+		contentPane.add(State);
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2_1.setBounds(352, 36, 154, 14);
+		
+		contentPane.add(lblNewLabel_2_1);
+		p.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		p.setBounds(279, 184, 89, 21);
+		
+		contentPane.add(p);
+		PostalCode.setColumns(10);
+		PostalCode.setBounds(378, 185, 142, 20);
+		
+		contentPane.add(PostalCode);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_3.setBounds(10, 93, 89, 21);
+		
+		contentPane.add(lblNewLabel_3);
+		MiddleInitial.setColumns(10);
+		MiddleInitial.setBounds(96, 93, 25, 20);
+		
+		contentPane.add(MiddleInitial);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel.setBounds(11, 216, 62, 29);
+		
+		contentPane.add(lblNewLabel);
+		
+		contentPane.add(UserID);
 		
 		
-		contentPane.add(lblDistroID);
-		lblNewLabel_4.setBounds(10, 259, 46, 14);
-		
-		contentPane.add(lblNewLabel_4);
 	}
+
 }
