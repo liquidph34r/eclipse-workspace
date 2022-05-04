@@ -122,10 +122,19 @@ public class SignUp extends JFrame{
 				if( (FName.getText().trim().length() != 0) && (LName.getText().trim().length() != 0) && (MiddleI.getText().trim().length() != 0) && (Email.getText().trim().length() != 0) && (Password.getText().trim().length() != 0) && (Address.getText().trim().length() != 0) && (City.getText().trim().length() != 0) && (C_Country.getText().trim().length() != 0) && (State.getText().trim().length() != 0) && (PostCode.getText().trim().length() != 0)) {
 					Connection connection;
 					try {
-						connection = DriverManager.getConnection("jdbc:mysql://localhost/javabook","root","");
-						Statement statement = connection.createStatement();
-			            statement.executeUpdate("INSERT INTO customer(FirstName, LastName, MiddleInitial, Email, Password, Address, City, State, PostalCode) VALUES('"+(FName.getText().trim())+"','"+(LName.getText().trim())+","+(MiddleI.getText().trim())+"','"+(Email.getText().trim())+"','"+(Password.getText().trim())+"','"+(Address.getText().trim())+"','"+(City.getText().trim())+"','"+(C_Country.getText().trim())+"','"+(State.getText().trim())+"','"+(PostCode.getText().trim()));
+						System.out.println("Connect to DB");
+					//step1 load the driver class
+					           Class.forName("oracle.jdbc.driver.OracleDriver");
+
+					//step2 create  the connection object
+					           	Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/ORCL", "HR", "oracle");
+					           	System.out.println("Database successfully connected");
+					           	Statement statement = conn.createStatement();
+					           	statement.executeUpdate("INSERT INTO customer(Account_id, first_name, last_name, Middle_init, email, password,  default_shipping_adress, default_shipping_city,default_shipping_country, default_shipping_state, default_shipping_zip) VALUES('"+(FName.getText().trim())+"','"+(LName.getText().trim())+","+(MiddleI.getText().trim())+"','"+(Email.getText().trim())+"','"+(Password.getText().trim())+"','"+(Address.getText().trim())+"','"+(City.getText().trim())+"','"+(C_Country.getText().trim())+"','"+(State.getText().trim())+"','"+(PostCode.getText().trim()));
 					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ClassNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
