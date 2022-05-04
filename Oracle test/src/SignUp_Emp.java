@@ -25,7 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class SignUp extends JFrame{
+public class SignUp_Emp extends JFrame{
 	
 	
 	private JPanel contentPane;
@@ -40,6 +40,7 @@ public class SignUp extends JFrame{
 	private JTextField PostCode;
 	private JTextField MiddleI;
 	private final JLabel lblsignup = new JLabel("");
+	private JTextField Distro_Code;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,7 +54,7 @@ public class SignUp extends JFrame{
 			}
 		});
 	}
-	public SignUp() {
+	public SignUp_Emp() {
 		initGUI();
 	}
 	private void initGUI() {
@@ -111,7 +112,7 @@ public class SignUp extends JFrame{
 		contentPane.add(Password);
 		
 		lblsignup.setForeground(Color.RED);
-		lblsignup.setBounds(248, 223, 46, 14);
+		lblsignup.setBounds(248, 248, 46, 14);
 		
 		contentPane.add(lblsignup);
 		
@@ -119,8 +120,8 @@ public class SignUp extends JFrame{
 		SignUp.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if( (FName.getText().trim().length() != 0) && (LName.getText().trim().length() != 0) && (MiddleI.getText().trim().length() != 0) && (Email.getText().trim().length() != 0) && (Password.getText().trim().length() != 0) && (Address.getText().trim().length() != 0) && (City.getText().trim().length() != 0) && (C_Country.getText().trim().length() != 0) && (State.getText().trim().length() != 0) && (PostCode.getText().trim().length() != 0)) {
-
+				if( (FName.getText().trim().length() != 0) && (LName.getText().trim().length() != 0) && (MiddleI.getText().trim().length() != 0) && (Email.getText().trim().length() != 0) && (Password.getText().trim().length() != 0) && (Address.getText().trim().length() != 0) && (City.getText().trim().length() != 0) && (C_Country.getText().trim().length() != 0) && (State.getText().trim().length() != 0) && (PostCode.getText().trim().length() != 0) && (Distro_Code.getText().trim().length() != 0)) {
+					Connection connection;
 					try {
 						System.out.println("Connect to DB");
 					//step1 load the driver class
@@ -129,8 +130,8 @@ public class SignUp extends JFrame{
 					//step2 create  the connection object
 					           	Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/ORCL", "HR", "oracle");
 					           	System.out.println("Database successfully connected");
-					           	Statement statement = conn.createStatement();
-					           	statement.executeUpdate("INSERT INTO customer(Account_id, first_name, last_name, Middle_init, email, password,  default_shipping_adress, default_shipping_city,default_shipping_country, default_shipping_state, default_shipping_zip) VALUES('"+(FName.getText().trim())+"','"+(LName.getText().trim())+","+(MiddleI.getText().trim())+"','"+(Email.getText().trim())+"','"+(Password.getText().trim())+"','"+(Address.getText().trim())+"','"+(City.getText().trim())+"','"+(C_Country.getText().trim())+"','"+(State.getText().trim())+"','"+(PostCode.getText().trim()));
+						Statement statement = conn.createStatement();
+			            statement.executeUpdate("INSERT INTO Employee(FirstName, LastName, MiddleInitial, Email, Password, Default_shipping_address, default_shipping_city, default_shipping_state, default_shipping_zip, Assigned_Distro_ID) VALUES('"+(FName.getText().trim())+"','"+(LName.getText().trim())+","+(MiddleI.getText().trim())+"','"+(Email.getText().trim())+"','"+(Password.getText().trim())+"','"+(Address.getText().trim())+"','"+(City.getText().trim())+"','"+(C_Country.getText().trim())+"','"+(State.getText().trim())+"','"+(PostCode.getText().trim())+"','"+(Distro_Code.getText().trim()));
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -222,9 +223,19 @@ public class SignUp extends JFrame{
 		
 	
 		lblsignup.setForeground(Color.RED);
-		lblsignup.setBounds(248, 223, 46, 14);
+		lblsignup.setBounds(248, 248, 46, 14);
 		
 		contentPane.add(lblsignup);
+		
+		JLabel lblNewLabel_4 = new JLabel("Enter Distro Code given your Employer:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_4.setBounds(10, 223, 238, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		Distro_Code = new JTextField();
+		Distro_Code.setBounds(248, 221, 86, 20);
+		contentPane.add(Distro_Code);
+		Distro_Code.setColumns(10);
 		
 }
 }

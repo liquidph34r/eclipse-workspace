@@ -175,7 +175,19 @@ public class Startup extends JFrame {
 				dispose();
 			}
 		});
-		SignUp.setBounds(197, 227, 89, 23);
+		SignUp.setBounds(91, 227, 89, 23);
 		contentPane.add(SignUp);
+		
+		JButton SignUp_2 = new JButton("Sign Up");
+		SignUp_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SignUp_Emp signUp1 = new SignUp_Emp();
+				signUp1.setVisible(true);
+				dispose();
+			}
+		});
+		SignUp_2.setBounds(326, 227, 89, 23);
+		contentPane.add(SignUp_2);
 	}
 }
