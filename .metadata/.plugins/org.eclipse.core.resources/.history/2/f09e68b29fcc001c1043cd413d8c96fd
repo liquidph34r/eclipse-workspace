@@ -111,7 +111,7 @@ public class Startup extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		
-		lblNewLabel_2.setBounds(91, 11, 103, 14);
+		lblNewLabel_2.setBounds(106, 11, 74, 14);
 		
 		contentPane.add(lblNewLabel_2);
 		
@@ -136,7 +136,7 @@ public class Startup extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Employee Login");
-		lblNewLabel_2_1.setBounds(326, 11, 89, 14);
+		lblNewLabel_2_1.setBounds(326, 11, 74, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		eUser = new JTextField();

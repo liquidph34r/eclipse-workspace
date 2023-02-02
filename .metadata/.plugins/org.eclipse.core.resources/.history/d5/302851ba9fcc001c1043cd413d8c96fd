@@ -111,7 +111,7 @@ public class Startup extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		
-		lblNewLabel_2.setBounds(91, 11, 103, 14);
+		lblNewLabel_2.setBounds(91, 11, 89, 14);
 		
 		contentPane.add(lblNewLabel_2);
 		
